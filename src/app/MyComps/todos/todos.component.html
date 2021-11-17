@@ -1,0 +1,17 @@
+
+<h3>Type and Submit your Todo 😉</h3>
+
+<div class="my-5">
+    <app-todo-submit-form [todo]="todos"  (todoSubmit)="addTodo($event)"></app-todo-submit-form>
+</div>
+<h4>Your todos</h4>
+<div *ngIf="todos.length > 0, else noTodo">
+    <ul *ngFor="let todo of todos"> 
+        <app-todo-layout [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-layout>
+    </ul>
+</div>
+<ng-template #noTodo>
+    <div class="alert alert-info">
+        <strong>No todos</strong>
+    </div>
+</ng-template>
